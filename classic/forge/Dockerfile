@@ -37,4 +37,10 @@ COPY . /app
 EXPOSE 8000
 
 # Run the application when the container launches
-CMD ["poetry", "run", "python", "classic/original_autogpt/__main__.py"]
+
+# --- Auto-Generated Entrypoint Configuration ---
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+RUN mkdir -p /var/log && touch /var/log/app.log
+EXPOSE 8000
+ENTRYPOINT ["/entrypoint.sh"]
